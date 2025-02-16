@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 11</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 1000vh; /* To allow scrolling */
+            background-image: url('https://www.w3schools.com/w3images/forest.jpg'); /* Background image */
+            background-size: 100%; /* Start background size at 100% */
+            background-attachment: fixed; /* Keeps background fixed while scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-size 0.1s ease-in-out; /* Add transition to background zoom */
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            transition: transform 0.1s ease-out; /* Delay the mouse-follow image */
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <img id="mouseFollowImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Mouse Follow Image">
+  
+    <script>
+        const mouseFollowImage = document.getElementById('mouseFollowImage');
+
+        window.addEventListener('scroll', function() {
+            // Increase the zoom effect of the background as you scroll
+            let zoom = 200 + window.scrollY / 10;  // Adjust the zoom factor
+            document.body.style.backgroundSize = `${zoom}%`;
+        });
+
+        window.addEventListener('mousemove', function(e) {
+            // Adding a slight delay to the mouse-follow image
+            let delay = 0; // Delay factor
+            let x = e.pageX - 100;  // Offset for center alignment
+            let y = e.pageY - 100;
+
+            mouseFollowImage.style.transition = `transform ${delay}s ease-out`;
+            mouseFollowImage.style.left = `${x}px`;
+            mouseFollowImage.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>

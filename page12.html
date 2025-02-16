@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 12</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 200vh; /* Allow scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto; /* Make sure the scroll bar is visible */
+            position: relative;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%; /* Ensure the background is tall enough to scroll */
+            background-image: url('https://4kwallpapers.com/images/wallpapers/glossy-abstract-1080x2160-9602.jpg'); /* Replace with your vertical image URL */
+            background-size: cover;
+            background-position: center;
+            z-index: -2; /* Background stays behind the content */
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            position: fixed; /* Keep the image on the screen at all times */
+            z-index: 1; /* Ensure it's always above the background */
+            transition: transform 0.1s ease-out;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <div class="background" id="scrollBackground"></div>
+    <img id="bounceImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Bounce Image">
+
+    <script>
+        const bounceImage = document.getElementById('bounceImage');
+        let posX = 0;
+        let posY = 0;
+        let speedX = 2;
+        let speedY = 2;
+
+        function moveImage() {
+            posX += speedX;
+            posY += speedY;
+
+            if (posX > window.innerWidth - 200 || posX < 0) {
+                speedX = -speedX;
+            }
+            if (posY > window.innerHeight - 200 || posY < 0) {
+                speedY = -speedY;
+            }
+
+            bounceImage.style.left = `${posX}px`;
+            bounceImage.style.top = `${posY}px`;
+        }
+
+        window.addEventListener('scroll', function() {
+            // You can add any specific actions here based on scroll position if needed
+        });
+
+        setInterval(moveImage, 10); // Continue the image movement
+    </script>
+</body>
+</html>

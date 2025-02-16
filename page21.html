@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 21</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 300vh; /* Enough height to scroll */
+            background-color: #f0f0f0;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 40px;
+            transition: all 0.3s ease;
+            position: fixed; /* Keep text fixed in the center */
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <h1 id="scrollText">Scroll Down for Bold, Italic, and Font Size Effects!</h1>
+
+    <script>
+        const text = document.getElementById('scrollText');
+
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+
+            // Add bold, italic, and change font size based on scroll position
+            if (scrollY > 100) {
+                text.classList.add('bold');
+                text.classList.add('italic');
+                text.style.fontSize = `${40 + scrollY / 10}px`; // Increase font size as you scroll
+            } else {
+                text.classList.remove('bold');
+                text.classList.remove('italic');
+                text.style.fontSize = '40px'; // Reset font size when scrolling up
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 3</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            height: 200vh;  /* Increased the height to allow scrolling */
+        }
+
+        .fade-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;  /* Takes up full viewport height */
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+<body>
+      
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <div class="fade-container">
+        <img id="fadeImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Fading Image">
+    </div>
+  
+    <script>
+        const fadeImage = document.getElementById('fadeImage');
+        const fadeContainer = document.querySelector('.fade-container');
+
+        window.addEventListener('scroll', function() {
+            let opacityValue = 1 - window.scrollY / 500;  // Change the divisor to control fade speed
+            opacityValue = Math.max(opacityValue, 0);  // Prevent opacity from going below 0
+            fadeContainer.style.opacity = opacityValue;
+        });
+    </script>
+</body>
+</html>

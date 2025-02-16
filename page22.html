@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 22</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .content {
+            height: 5000px; /* Allows scrolling */
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .box {
+            flex: none;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 25px;
+            color: #fff;
+            background: #ff8330;
+            will-change: transform;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .box:nth-of-type(2) {
+            background: #E01B5D;
+        }
+
+        .box:nth-of-type(3) {
+            background: #30FFFF;
+        }
+
+        .box:nth-of-type(4) {
+            background: #B3FF30;
+        }
+
+        .box:nth-of-type(5) {
+            background: #308AFF;
+        }
+
+        .box:nth-of-type(6) {
+            background: #1BE059;
+        }
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+   
+<div class="content">
+  <div class="wrapper">
+    <div class="box" data-scroll-speed="2"></div>
+    <div class="box" data-scroll-speed="3"></div>
+    <div class="box" data-scroll-speed="6"></div>
+    <div class="box" data-scroll-speed="5"></div>
+    <div class="box" data-scroll-speed="9"></div>
+    <div class="box" data-scroll-speed="4"></div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Function to handle the scroll effects
+    $.fn.moveIt = function() {
+        var $window = $(window);
+        var instances = [];
+
+        $(this).each(function() {
+            instances.push(new moveItItem($(this)));
+        });
+
+        window.addEventListener('scroll', function() {
+            var scrollTop = $window.scrollTop();
+            instances.forEach(function(inst) {
+                inst.update(scrollTop);
+            });
+        }, { passive: true });
+    };
+
+    var moveItItem = function(el) {
+        this.el = $(el);
+        this.speed = parseInt(this.el.attr('data-scroll-speed'));
+    };
+
+    moveItItem.prototype.update = function(scrollTop) {
+        this.el.css('transform', 'translateY(' + -(scrollTop / this.speed) + 'px)');
+    };
+
+    // Initialize the movement
+    $(function() {
+        $('[data-scroll-speed]').moveIt();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 23</title>
+    <style>
+        .block {
+            height: 5em;
+            line-height: 5em;
+            width: 10em;
+            background: #464646;
+            color: #fdfdfd;
+            text-align: center;
+            margin: 1em auto;
+            text-shadow: 0 0 1px #333;
+        }
+
+        .animated {
+            visibility: visible; /* Make visible once animated */
+            animation-fill-mode: both;
+            animation-duration: 1s;
+            opacity: 1; /* Ensure it's fully visible after animation */
+        }
+
+        @keyframes fadeIn {
+            0%,
+            60% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounceInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-2000px);
+            }
+
+            60% {
+                transform: translateX(20px);
+            }
+
+            80% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(2000px);
+            }
+
+            60% {
+                transform: translateX(-20px);
+            }
+
+            80% {
+                transform: translateX(5px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(40px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeBgColor {
+            0%,
+            70% {
+                background: none;
+            }
+
+            100% {
+                background: #464646;
+            }
+        }
+
+        .animated.animationDelay {
+            animation-delay: 0.4s;
+        }
+
+        .animated.animationDelayMed {
+            animation-delay: 1.2s;
+        }
+
+        .animated.animationDelayLong {
+            animation-delay: 1.6s;
+        }
+
+        .animated.fadeBgColor {
+            animation-name: fadeBgColor;
+        }
+
+        .animated.bounceIn {
+            animation-name: bounceIn;
+        }
+
+        .animated.bounceInRight {
+            animation-name: bounceInRight;
+        }
+
+        .animated.bounceInLeft {
+            animation-name: bounceInLeft;
+        }
+
+        .animated.fadeIn {
+            animation-name: fadeIn;
+        }
+
+        .animated.fadeInDown {
+            animation-name: fadeInDown;
+        }
+
+        .animated.fadeInUp {
+            animation-name: fadeInUp;
+        }
+
+        .animated.moveUp {
+            animation-name: moveUp;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <header class="site-header">
+    </header>
+
+    <div class="wrapper">
+        <div class="block animatable bounceIn"></div>
+        <div class="block animatable bounceInLeft"></div>
+        <div class="block animatable bounceInRight"></div>
+        <div class="block animatable fadeIn"></div>
+        <div class="block animatable fadeInDown"></div>
+        <div class="block animatable fadeInUp"></div>
+        <div class="block animatable moveUp"></div>
+        <div class="block animatable fadeBgColor"></div>
+
+        <!-- Repeat blocks for the effect -->
+        <div class="block animatable bounceIn"></div>
+        <div class="block animatable bounceInLeft"></div>
+        <div class="block animatable bounceInRight"></div>
+        <div class="block animatable fadeIn"></div>
+        <div class="block animatable fadeInDown"></div>
+        <div class="block animatable fadeInUp"></div>
+        <div class="block animatable moveUp"></div>
+        <div class="block animatable fadeBgColor"></div>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        jQuery(function ($) {
+            // Function to add 'animated' class to elements in view
+            var doAnimations = function () {
+                var offset = $(window).scrollTop() + $(window).height(),
+                    $animatables = $('.animatable');
+
+                $animatables.each(function (i) {
+                    var $animatable = $(this);
+                    if (($animatable.offset().top + $animatable.height() - 20) < offset) {
+                        // Add 'animated' class to trigger animation
+                        $animatable.removeClass('animatable').addClass('animated');
+
+                        // Once the animation is done, we immediately add the 'animatable' class again
+                        $animatable.on('animationend', function () {
+                            // Add a small delay before re-triggering
+                            setTimeout(function () {
+                                $animatable.removeClass('animated').addClass('animatable');
+                            }, 200); // Adjust the delay if needed
+                        });
+                    }
+                });
+            };
+
+            // Trigger the animation on scroll and on page load
+            $(window).on('scroll', doAnimations);
+            $(window).trigger('scroll');
+        });
+    </script>
+
+</body>
+
+</html>

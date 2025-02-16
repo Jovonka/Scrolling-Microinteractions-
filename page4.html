@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 4</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 200vh;  /* Increased height for scrolling */
+        }
+
+        .rotate-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: transform 0.1s ease-out;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <div class="rotate-container">
+        <img id="rotateImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Rotating Image">
+    </div>
+  
+    <script>
+        const rotateImage = document.getElementById('rotateImage');
+
+        window.addEventListener('scroll', function() {
+            let rotateValue = window.scrollY / 3;  // Change the divisor to control the rotation speed
+            rotateImage.style.transform = `rotate(${rotateValue}deg)`;
+        });
+    </script>
+</body>
+</html>

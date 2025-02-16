@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 19</title>
+    <style>
+        /* Make the whole page scrollable */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eaeaea;
+            height: 100vh; /* Extra height to enable scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Background text */
+        .background-text {
+            font-size: 4rem; /* Large text */
+            color: rgba(0, 0, 0, 0.1); /* Faded effect */
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 0%;
+        }
+
+        /* Centered inner container */
+        .inner-container {
+            
+            width: 400px;
+            height: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 100;
+        }
+
+        /* Scrollable content inside the box */
+        .scrollable-text {
+            width: 100%;
+            height: 100px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 200;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <!-- Background text that scrolls with the page -->
+    <div class="background-text"> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+        Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+        Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+        Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+        Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+        Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+  </div>
+
+    <!-- Fixed, centered container with scrollable text -->
+    <div class="inner-container">
+        <h3>Inner Content. </h3>
+        <div class="scrollable-text">
+            <p>
+                This is the inner scrolling text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+                Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+                Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+                Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+                Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+                Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

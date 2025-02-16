@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 20</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow-x: scroll; /* Show horizontal scroll bar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+        }
+
+        .scroll-content {
+            display: flex;
+            width: 200%;  /* Make it 2x the viewport width */
+            height: 100vh;
+            transition: transform 0.1s ease;
+        }
+
+        .scroll-section {
+            width: 100vw;  /* Each section is the full viewport width */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+
+        /* Styling for the left text */
+        .scroll-text {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            z-index: 101;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <!-- Left side text -->
+    <div class="scroll-text">
+        Scroll to the Right
+    </div>
+
+    <div class="scroll-content" id="scrollContent">
+        <div class="scroll-section">
+            <!-- Left section can remain empty or have any content -->
+        </div>
+        <!-- Image section -->
+        <div class="scroll-section">
+            <img src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Horizontal Scrolling Image">
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollContent = document.getElementById('scrollContent');
+            // Scroll horizontally based on scroll position
+            scrollContent.style.transform = `translateX(-${window.scrollY}px)`;
+        });
+    </script>
+</body>
+</html>

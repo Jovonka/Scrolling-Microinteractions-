@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 6</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 200vh;  /* Increased height for scrolling */
+        }
+
+        .squish-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+            transition: transform 0.1s ease-out;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #900000;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+
+    <div class="squish-container">
+        <img id="squishImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Squishing Image">
+    </div>
+  
+    <script>
+        const squishImage = document.getElementById('squishImage');
+
+        window.addEventListener('scroll', function() {
+            let squishAmount = window.scrollY / 500;  // Adjust the divisor for more or less squishing
+            squishImage.style.transform = `scaleY(${1 - squishAmount})`;  // Squishes the image vertically as you scroll
+        });
+    </script>
+</body>
+</html>
