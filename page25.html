@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page 25</title>
+    <title>page 25</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             height: 200vh; /* Allow scrolling */
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow-x: hidden;
+        }
+
+        .grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            gap: 1px;
+            z-index: -1; /* Ensures grid stays in the background */
+        }
+
+        .grid div {
+            border: 1px solid rgba(150, 100, 200, 0.5);
+            background: transparent;
         }
 
         .container {
@@ -22,11 +37,12 @@
             gap: 20px;
             width: 100%;
             max-width: 1200px;
-            position: fixed; /* Keep the grid fixed in the center */
+            position: fixed;
             top: 50%;
-
-   
+            left: 50%;
+            transform: translate(-50%, -50%);
             transition: transform 0.1s ease-out;
+            z-index: 1; /* Ensure items appear above the grid */
         }
 
         .item {
@@ -38,8 +54,9 @@
             transition: transform 0.1s ease-out, font-size 0.1s ease-out;
         }
 
-        .back-btn {
-            margin-top: 20px;
+        .nav-btn {
+            position: fixed;
+            top: 20px;
             padding: 10px 20px;
             background-color: #BA0000;
             color: white;
@@ -47,50 +64,56 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
+            z-index: 10;
         }
-
-        .back-btn:hover {
-            background-color: #900000;
-        }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+        .nav-btn:hover { background-color: #900000; }
     </style>
 </head>
 <body>
 
-    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+    <button class="nav-btn prev-btn" onclick="window.location.href='page24.html';">Previous</button>
+    <button class="nav-btn next-btn" onclick="window.location.href='page1.html';">Next</button>
 
-    <div class="container">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-    </div>
+    <div class="grid"></div>
 
+  
     <script>
-        const container = document.querySelector('.container');
-        const items = document.querySelectorAll('.item');
+        const grid = document.querySelector('.grid');
 
-        window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
+        function generateGrid() {
+            grid.innerHTML = ''; // Clear previous grid
+            
+            // Generate random grid size (between 8x8 and 15x15)
+            let cols = Math.floor(Math.random() * 8) + 8;
+            let rows = Math.floor(Math.random() * 8) + 8;
 
-            // Scale down the entire container and items
-            const scaleFactor = 1 - (scrollY / 1000); // The more you scroll, the smaller the items
-            const gridSize = Math.max(3, Math.floor(9 - scrollY / 100)); // Reduce grid size as you scroll
+            grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
 
-            container.style.transform = `scale(${scaleFactor})`; // Scale down the whole grid container
+            let totalCells = cols * rows;
+            for (let i = 0; i < totalCells; i++) {
+                let cell = document.createElement('div');
+                grid.appendChild(cell);
+            }
+        }
 
-            // Change the grid layout and item size
-            container.style.gridTemplateColumns = `repeat(${gridSize}, 5fr)`;
-
-            items.forEach(item => {
-                item.style.transform = `scale(${scaleFactor})`; // Scale down individual items
-                item.style.fontSize = `${20 * scaleFactor}px`; // Adjust font size based on scale
-            });
+        // Run function on scroll with requestAnimationFrame for performance
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    generateGrid();
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
+
+        // Initialize grid on load
+        generateGrid();
     </script>
+
 </body>
 </html>

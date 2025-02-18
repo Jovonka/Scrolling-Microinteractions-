@@ -14,12 +14,24 @@
             align-items: center;
             flex-direction: column;
             background-color: #f0f0f0;
-            min-height: 200vh;  /* Increased the height to allow more scrolling */
-            padding-bottom: 100px;
+            min-height: 100vh;  /* Increased the height to allow more scrolling */
+ 
         }
 
-        .zoom-container {
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 200%; /* Ensure the background is tall enough to scroll */
+            
+            background-image: url('img/BackgroundFace.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -2; /* Background stays behind the content */
+        }
+        .zoom-container {
+            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,8 +39,10 @@
         }
 
         img {
+            position: relative;
             width: 500px;
             height: 500px;
+            top:400px;
             transition: transform 0.1s ease-out;
         }
 
@@ -49,22 +63,50 @@
         .back-btn:hover {
             background-color: #900000;
         }
+        .nav-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            z-index: 100;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+        .nav-btn:hover {
+            background-color: #900000;
+        }
+      
     </style>
 </head>
 <body>
       
-    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+    <button class="nav-btn prev-btn" onclick="window.location.href='page1.html';">Previous</button>
+    <button class="nav-btn next-btn" onclick="window.location.href='page3.html';">Next</button>
+    <div class="background" id="scrollBackground"></div>
+
 
     <div class="zoom-container">
-        <img id="zoomImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Zoomable Image">
+
+
+        <img id="zoomImage"  src="img/Face.png" alt="Bowl Image">
     </div>
   
     <script>
         const zoomImage = document.getElementById('zoomImage');
 
         window.addEventListener('scroll', function() {
-            let scaleValue = 1 + window.scrollY / 1000;  // Change the divisor to control the zoom speed
-            scaleValue = Math.min(scaleValue, 2);  // Limit the zoom to a maximum value (2x zoom)
+            let scaleValue = 3 + window.scrollY / 200;  // Change the divisor to control the zoom speed
+            scaleValue = Math.min(scaleValue, 10);  // Limit the zoom to a maximum value (2x zoom)
             zoomImage.style.transform = `scale(${scaleValue})`;
         });
     </script>

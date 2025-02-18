@@ -14,6 +14,12 @@
             align-items: center;
             flex-direction: column;
             height: 200vh;  /* Increased height for scrolling */
+            background-color: rgba(247, 247, 226, 0.327);
+            background-image: 
+                linear-gradient(rgba(162, 200, 196, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(162, 199, 200, 0.5) 1px, transparent 1px);
+            background-size: 50px 50px; /* Adjust size of grid */
+  
         }
 
         .color-container {
@@ -25,7 +31,7 @@
         }
 
         img {
-            width: 500px;
+            width: 700px;
             height: 500px;
             transition: filter 0.1s ease-out;
         }
@@ -47,13 +53,36 @@
         .back-btn:hover {
             background-color: #900000;
         }
+        .nav-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            z-index: 100;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+        .nav-btn:hover {
+            background-color: #900000;
+        }
     </style>
 </head>
 <body>
-    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+    <button class="nav-btn prev-btn" onclick="window.location.href='page4.html';">Previous</button>
+    <button class="nav-btn next-btn" onclick="window.location.href='page6.html';">Next</button>
 
     <div class="color-container">
-        <img id="colorImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Color Shifting Image">
+        <img id="colorImage" src="img/rainbow.png" alt="Bowl Image">
     </div>
   
     <script>

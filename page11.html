@@ -9,7 +9,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             height: 1000vh; /* To allow scrolling */
-            background-image: url('https://www.w3schools.com/w3images/forest.jpg'); /* Background image */
+            background-image: url('https://wallpapers.com/images/hd/vector-art-background-r2tjrkpy71ite201.jpg'); /* Background image */
             background-size: 100%; /* Start background size at 100% */
             background-attachment: fixed; /* Keeps background fixed while scrolling */
             display: flex;
@@ -43,19 +43,42 @@
         .back-btn:hover {
             background-color: #900000;
         }
+        .nav-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            z-index: 100;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+        .nav-btn:hover {
+            background-color: #900000;
+        }
     </style>
 </head>
 <body>
-    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+    <button class="nav-btn prev-btn" onclick="window.location.href='page10.html';">Previous</button>
+    <button class="nav-btn next-btn" onclick="window.location.href='page12.html';">Next</button>
 
-    <img id="mouseFollowImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Mouse Follow Image">
+    <img id="mouseFollowImage"  src="img/magnify.png" alt="Bowl Image">
   
     <script>
         const mouseFollowImage = document.getElementById('mouseFollowImage');
 
         window.addEventListener('scroll', function() {
             // Increase the zoom effect of the background as you scroll
-            let zoom = 200 + window.scrollY / 10;  // Adjust the zoom factor
+            let zoom = 20 + window.scrollY / 50;  // Adjust the zoom factor
             document.body.style.backgroundSize = `${zoom}%`;
         });
 

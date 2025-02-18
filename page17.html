@@ -13,12 +13,13 @@
             justify-content: center;
             align-items: center;
             background-color: #000000;
+            
    
         }
 
         img {
-            width: 200px;
-            height: 200px;
+            width: 500px;
+            height: 300px;
             opacity: 1;
             transition: opacity 0.2s ease;
         }
@@ -40,12 +41,35 @@
         .back-btn:hover {
             background-color: #900000;
         }
+        .nav-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            z-index: 100;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+        .nav-btn:hover {
+            background-color: #900000;
+        }
     </style>
 </head>
 <body>
-    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+    <button class="nav-btn prev-btn" onclick="window.location.href='page16.html';">Previous</button>
+    <button class="nav-btn next-btn" onclick="window.location.href='page18.html';">Next</button>
 
-    <img id="flashingImage" src="https://lorimichielfitness.com/wp-content/uploads/2023/08/Oops_free-emoji-clipart-13.png" alt="Flashing Image">
+    <img id="flashingImage" src="img/eye.png" alt="Bowl Image">
   
     <script>
         const flashingImage = document.getElementById('flashingImage');

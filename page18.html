@@ -48,11 +48,38 @@
         .back-btn:hover {
             background-color: #900000;
         }
+        .nav-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            z-index: 100;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+        .nav-btn:hover {
+            background-color: #900000;
+        }
+        .flexContainer{
+            text-align: center;
+            color: aliceblue;
+        }
     </style>
 </head>
 <body>
-    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
-
+    <button class="nav-btn prev-btn" onclick="window.location.href='page17.html';">Previous</button>
+    <button class="nav-btn next-btn" onclick="window.location.href='page19.html';">Next</button>
+    <div class='flexContainer'>Scroll to see the stars!</div>
     <script>
         function spawnStar() {
             const star = document.createElement('div');

@@ -20,7 +20,7 @@
 
         /* Background text */
         .background-text {
-            font-size: 4rem; /* Large text */
+            font-size: 5rem; /* Large text */
             color: rgba(0, 0, 0, 0.1); /* Faded effect */
             position: absolute;
             width: 100%;
@@ -72,10 +72,33 @@
         .back-btn:hover {
             background-color: #900000;
         }
+        .nav-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #BA0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            z-index: 100;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
+        .nav-btn:hover {
+            background-color: #900000;
+        }
     </style>
 </head>
 <body>
-    <button class="back-btn" onclick="window.location.href='index.html';">Back to Index</button>
+    <button class="nav-btn prev-btn" onclick="window.location.href='page18.html';">Previous</button>
+    <button class="nav-btn next-btn" onclick="window.location.href='page20.html';">Next</button>
 
     <!-- Background text that scrolls with the page -->
     <div class="background-text"> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
