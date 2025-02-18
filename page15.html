@@ -59,12 +59,19 @@
         .nav-btn:hover {
             background-color: #900000;
         }
+        .flexContainer{
+			text-align: center;
+			color: #5f5f5f;
+            position: relative;
+            top: 5%;
+		}
     </style>
 </head>
 <body>
     <button class="nav-btn prev-btn" onclick="window.location.href='page14.html';">Previous</button>
     <button class="nav-btn next-btn" onclick="window.location.href='page16.html';">Next</button>
-
+    <div class='flexContainer'>Scroll</div>
+ 
     <script>
         window.addEventListener('scroll', function() {
             let scrollValue = window.scrollY / 10;
