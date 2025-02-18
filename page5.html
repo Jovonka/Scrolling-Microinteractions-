@@ -19,13 +19,7 @@
                 linear-gradient(rgba(162, 200, 196, 0.5) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(162, 199, 200, 0.5) 1px, transparent 1px);
             background-size: 50px 50px; /* Adjust size of grid */
-  
         }
-        img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
 
         .color-container {
             width: 100%;
@@ -35,29 +29,14 @@
             height: 100vh;
         }
 
-        img {
+        .rainbow-box {
             width: 700px;
             height: 500px;
+            background: linear-gradient(0deg, rgb(216, 179, 179), rgb(186, 176, 157), rgb(189, 189, 155), rgb(137, 198, 137), rgb(134, 134, 214), rgb(176, 155, 192), rgb(249, 134, 249));
             transition: filter 0.1s ease-out;
+            border-radius: 200%;
         }
 
-        .back-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #BA0000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-        }
-
-        .back-btn:hover {
-            background-color: #900000;
-        }
         .nav-btn {
             margin-top: 20px;
             padding: 10px 20px;
@@ -87,16 +66,15 @@
     <button class="nav-btn next-btn" onclick="window.location.href='page6.html';">Next</button>
 
     <div class="color-container">
-        <img id="colorImage" src="img/rainbow.png" alt="">
-   
+        <div id="rainbowBox" class="rainbow-box"></div>
     </div>
   
     <script>
-        const colorImage = document.getElementById('colorImage');
+        const rainbowBox = document.getElementById('rainbowBox');
 
         window.addEventListener('scroll', function() {
             let colorValue = window.scrollY / 3;  // Adjust the divisor for the color shift speed
-            colorImage.style.filter = `hue-rotate(${colorValue}deg)`;
+            rainbowBox.style.filter = `hue-rotate(${colorValue}deg)`;
         });
     </script>
 </body>
